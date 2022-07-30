@@ -1,0 +1,29 @@
+/* Reseteo de CSS */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background-color:  whitesmoke;
+}
+
+header{
+    display: flex;
+    background-color: #128c7e;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:end;
+    align-items:center;
+    padding: 50px 20px;
+}
+
+.logo{
+    width: 80px;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+}

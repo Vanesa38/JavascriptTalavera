@@ -59,3 +59,43 @@ function calcular(){
 }
 
     calcular();
+
+// Incorporando arrays //
+
+for(let i=0;i<5;i++){
+    console.log(productos[i]);
+}
+
+class productos {
+    constructor(nombre, precio) {
+        this.nombre = nombre.toUpperCase();
+        this.precio = parseFloat(precio);
+        this.vendido = false;
+    }
+    sumaiva() {
+        this.precio = this.precio * 1.21;
+    }
+}
+
+const productos=[
+    {
+        producto: "Aceite Chía 150ml Nutrasem",
+        precio: "770"
+    },
+    {
+        producto: "Aceite Lino Gourmet 250 ml Nutrasem",
+        precio: "740"
+    },
+    {
+        producto: "Aceite Sésamo 250ml Nutrasem",
+        precio: "1000"
+    }
+];
+for (const productos of productos){
+     console.log(productos.precio);
+
+}
+
+productos.push("Jalapeño Ahumado 180ml");
+console.log(productos);
+
