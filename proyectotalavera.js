@@ -1,3 +1,5 @@
+//funcion Saludo//
+
 function saludar() {
     alert("Bienvenido a Habito")
 }
@@ -101,8 +103,12 @@ for (const productos of productos){
 
 }
 
+//producto agregado al stock//
+
 productos.push("Jalapeño Ahumado 180ml");
 console.log(productos);
+
+//productos de oferta//
 
 const oferta = productos.filter(producto => producto.precio < 1000)
 console.log(oferta)
