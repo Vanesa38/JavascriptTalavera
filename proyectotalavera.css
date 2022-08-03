@@ -22,8 +22,35 @@ header{
 }
 
 .logo{
-    width: 80px;
-    position: absolute;
+    width: 120px;
+    position: fixed;
     top: 10px;
     left: 30px;
+}
+
+.contenedor{
+    display: grid;
+    grid-template-areas: "card title" "card title" "card title" "card title" "card title";
+    grid-template-columns: repeat(3, 2fr);
+    padding: 0px 25px;
+    column-gap: 2rem;
+}
+
+.contenedor-card{
+    grid-area: auto;
+}
+
+main{
+    text-align: center;
+}
+
+footer{
+    display: grid;
+    bottom: 0;
+    background-color: #128c7e;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    margin-top: 30px;
 }
