@@ -1,71 +1,55 @@
-//funcion Saludo//
-
-function saludar() {
-    alert("Bienvenido a Habito")
+class listado {
+    constructor (nombre,precio, promo){
+    this.nombre = nombre;
+    this.precio= parseFloat(precio);
+    this.promo = this.promo;
+}
 }
 
-saludar ();
+const listapromociones = [
+       {
+        nombre: "promo refrigerados1",
+        precio: "$1680",
+        promo: scr="./imagenes/promo1.png"
+       },
+       {
+        nombre: "promo refrigerados2",
+        precio: "$1550",
+        promo: scr="./imagenes/promo2.png"
+       },
+       {
+        nombre: "promo refrigerados3",
+        precio: "$1860",
+        promo: scr="./imagenes/promo3.png"
+       },
+       {
+        nombre: "promo refrigerados laberinto",
+        precio: "$1740",
+        promo: scr="./imagenes/promos.png"
+       },
+       {
+        nombre: "promo gulera",
+        precio: "$740",
+        promo: scr="./imagenes/promo6.png"
+       },
+    
+];
 
-let producto = prompt ("Ingresa el producto para saber su precio");
-let precio =0;
-function calcular(){
-
-    while(producto!="fin"){
-        switch(producto){
-            case "Leche de Almendras y coco 1lt":
-                precio=precio+500;
-                console.log("la leche de almendras cuesta $500");
-                console.log("El articulo se encuentra en stock");
-                break;
-            case "Jugo Arandanos 1.5lt c/stevia":
-                precio=precio+150;
-                console.log("El jugo de Arandanos cuesta $150");
-                console.log("El articulo se encuentra en stock");
-                break;
-            case "Kefir 1lt Gaia Vegan":
-                precio=precio+350
-                console.log("Kefir cuesta $350");
-                console.log("El articulo se encuentra en stock");
-                break;
-            case "Vita Biosa Probiota Sabor Natural 500ml":
-                precio=precio+1180
-                console.log("Vita Biosa cuesta $1180");
-                console.log("El articulo se encuentra en stock");
-                break;
-            case "Arrope de Mistol 430g":
-                precio=precio+360
-                console.log("El arrope de mistol cuesta $360");
-                console.log("El articulo se encuentra en stock");
-                break;
-            case "Pasta De Maní Natural 380g Hardy":
-                precio=precio+460
-                console.log("La pasta de mani cuesta $460");
-                console.log("El articulo se encuentra en stock");
-                break;
-            case "Queso Camembert Caju Augusta 150g":
-                console.log("El articulo no se encuentra en stock");
-                break;
-            case "Cerveza de Mijo Rubia en Lata 473ml Gauther":
-                precio=precio+350
-                console.log("La cerveza de mijo cuesta $350");
-                console.log("El articulo se encuentra en stock");
-                break;
-            case "Fernet Yuyo 750 ml":
-                precio=precio+800
-                console.log("El fernet cuesta $800");
-                console.log("El articulo se encuentra en stock");
-                break;
-            default:
-                console.log("Este articulo no se encuentra disponible");
-                break;
-        }
-        producto=prompt("Ingresa el producto para saber su precio.");
-    }
-
-    console.log("Total a pagar $"+precio);
+let cartas=document.getElementById("promociones");
+for(const imagen of listapromociones){
+    let card=document.createElement("div");
+    card.className="card col-3 text-align-center";
+    card.innerHTML=`
+    <div class="card" style="width: 18rem;">
+    <img src= ${imagen.fuente} class="card-img-top" alt="...">
+            <h5 class="card-title">${imagen.nombre}</h5>
+            <p class="card-text">${imagen.precio}</p>
+            <a href="#" id = "Boton" class="btn btn-primary">COMPRAR</a>
+        </div>
+    `;
+    card.append(cartas);
 }
-
-    calcular();
+let boton = document.getElementsByClassName("btn")
 
 // Incorporando arrays //
 
@@ -73,7 +57,7 @@ for(let i=0;i<5;i++){
     console.log(productos[i]);
 }
 
-class productos {
+class productosiva {
     constructor(nombre, precio) {
         this.nombre = nombre.toUpperCase();
         this.precio = parseFloat(precio);
@@ -84,7 +68,7 @@ class productos {
     }
 }
 
-const productos=[
+const listaproductos=[
     {
         producto: "Aceite Chía 150ml Nutrasem",
         precio: "770"
