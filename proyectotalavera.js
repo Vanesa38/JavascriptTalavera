@@ -1,8 +1,7 @@
 class listado {
-    constructor (nombre,precio, promo){
+    constructor (nombre,precio,){
     this.nombre = nombre;
     this.precio= parseFloat(precio);
-    this.promo = this.promo;
 }
 }
 
@@ -10,27 +9,22 @@ const listapromociones = [
        {
         nombre: "promo refrigerados1",
         precio: "$1680",
-        promo: scr="./imagenes/promo1.png"
        },
        {
         nombre: "promo refrigerados2",
         precio: "$1550",
-        promo: scr="./imagenes/promo2.png"
        },
        {
         nombre: "promo refrigerados3",
         precio: "$1860",
-        promo: scr="./imagenes/promo3.png"
        },
        {
         nombre: "promo refrigerados laberinto",
         precio: "$1740",
-        promo: scr="./imagenes/promos.png"
        },
        {
         nombre: "promo gulera",
         precio: "$740",
-        promo: scr="./imagenes/promo6.png"
        },
     
 ];
