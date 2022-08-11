@@ -30,13 +30,13 @@ header{
 
 .contenedor{
     display: grid;
-    grid-template-areas: "card title" "card title" "card title" "card title" "card title";
+    grid-template-areas: "cards title" "cards title" "cards title" "cards title" "cards title";
     grid-template-columns: repeat(3, 2fr);
     padding: 0px 25px;
     column-gap: 2rem;
 }
 
-.contenedor-card{
+.contenedor-cards{
     grid-area: auto;
 }
 

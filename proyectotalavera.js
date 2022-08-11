@@ -2,7 +2,7 @@ let carrito=[];
 
 
 let cards=document.getElementById("productos"); 
-    for (const listaproductos of productos) {
+    for (const imagen of listaproductos) {
         let card=document.createElement("div");
         card.className="card col-3 text-align-center";
         card.innerHTML=`
