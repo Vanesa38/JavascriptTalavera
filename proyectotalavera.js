@@ -1,103 +1,47 @@
-class listado {
-    constructor (nombre,precio,){
-    this.nombre = nombre;
-    this.precio= parseFloat(precio);
+let carrito=[];
+
+
+let cards=document.getElementById("productos"); 
+    for (const Promo of listaproductos) {
+        let card=document.createElement("div");
+        card.className="card col-3 text-align-center";
+        card.innerHTML=`
+        <div class="card" style="width: 18rem;">
+        <img src= ${imagen.productos} class="card-img-top" alt="...">
+        <h5 class="card-title">${imagen.foto}</h5>
+        <p class="card-text">${imagen.nombre}</p>
+        <button id="miBoton--${imagen.precio}" class="btn btn-primary">COMPRAR</button>
+    </div>
+`;
+ cards.append(card);
+
 }
-}
+//Agregar productos al carrito//
 
-const listapromociones = [
-       {
-        nombre: "promo refrigerados1",
-        precio: "$1680",
-       },
-       {
-        nombre: "promo refrigerados2",
-        precio: "$1550",
-       },
-       {
-        nombre: "promo refrigerados3",
-        precio: "$1860",
-       },
-       {
-        nombre: "promo refrigerados laberinto",
-        precio: "$1740",
-       },
-       {
-        nombre: "promo gulera",
-        precio: "$740",
-       },
-    
-];
+let miboton = document.getElementById(`btn${imagen.nombre}`);
 
-let cartas=document.getElementById("promociones");
-for(const imagen of listapromociones){
-    let card=document.createElement("div");
-    card.className="card col-3 text-align-center";
-    card.innerHTML=`
-    <div class="card" style="width: 18rem;">
-    <img src= ${imagen.promociones} class="card-img-top" alt="promociones">
-    <div class="card-body">
-            <h5 class="card-title">${imagen.nombre}</h5>
-            <p class="card-text">${imagen.precio}</p>
-            <button id="miBoton" class="btn btn-primary">Comprar</button>
-        </div>
-        </div>
-    `;
-    card.append(cartas);
-}
-let boton = document.getElementsByClassName("miBoton")
+miBoton.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("Agregaste" + " " + producto.nombre + " " +"al carrito");
+    productos.push(producto);
+})
 
-boton.onclick = () => {
-    console.log("Agregaste la promo al carrito");
-    carrito.push(promo);
-    console.table(carrito);
-}
+//fin de compra//
+let botonFinalizarCompra = document.getElementById("fin")
+let precioFinal = 0
+let checkOut = 0
+botonFinDeCompra.addEventListener ("click", (e) => {
+    e.preventDefault ();
+    precioFinal = productos.map (productos => productos.precio)
+    checkOut = precioFinal.reduce ((ac,el) => ac + el,0)
+    console.table(productos);
+    const oferta = productos.filter (producto => producto.precio < 1000)
+    console.log ("Los siguientes productos estan en oferta")
+    console.log (oferta)
 
-// Incorporando arrays //
+    console.log ("El total a pagar es $" + checkOut)
 
-//for(let i=0;i<5;i++){
-    //console.log(productos[i]);
-//}
 
-class productosiva {
-    constructor(nombre, precio) {
-        this.nombre = nombre.toUpperCase();
-        this.precio = parseFloat(precio);
-        this.vendido = false;
-    }
-    sumaiva() {
-        this.precio = this.precio * 1.21;
-    }
-}
-
-const listaproductos=[
-    {
-        producto: "Aceite Chía 150ml Nutrasem",
-        precio: "770"
-    },
-    {
-        producto: "Aceite Lino Gourmet 250 ml Nutrasem",
-        precio: "740"
-    },
-    {
-        producto: "Aceite Sésamo 250ml Nutrasem",
-        precio: "1000"
-    }
-];
-//for (const productos of productos){
-     //console.log(productos.precio);
-
-//}
-
-//producto agregado al stock//
-
-//productos.push("Jalapeño Ahumado 180ml");
-//console.log(productos);
-
-//productos de oferta//
-
-//const oferta = productos.filter(producto => producto.precio < 1000)
-//console.log(oferta)
-
+})
 
 

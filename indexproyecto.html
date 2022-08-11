@@ -22,84 +22,47 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="./indexproyecto.html"><strong>HOME</strong></a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link active boton" aria-current="page" href="./indexproyecto.html"><strong>COMPRAR</strong></a>
-                  </li>
                 </ul>
              </div>
             </div>
         </nav>
     </header>
     <main>
-        <div>
-            <H1>TU TIENDA SALUDABLE</H1> 
-        </div>
-        <div>
-            <img src="./imagenes/fraselocal.png" alt="">
-        </div>
         <div class="container">
-            <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4"></div>
-                <div class="col-sm-4 col-md-4 col-lg-4"></div>
-                <div class="col-sm-4 col-md-4 col-lg-4"></div>
-        </div> 
-        <section>
-          <article id="cartas" class="row">
-               <div class="card" style="width: 18rem;">
-                   <img src="./imagenes/promo1.png" class="card-img-top" alt="...">
-                   <div class="card-body">
-                     <h5 class="card-title">Tus Promos</h5>
-                     <p class="card-text">Productos frescos y de primera Calidad.</p>
-                     <a href="#" class="btn btn-primary">COMPRAR</a>
-                   </div>
-               </div>
-          </article>
-          <article id="cartas" class="row">
-           <div class="card" style="width: 18rem;">
-               <img src="./imagenes/promo2.png" class="card-img-top" alt="...">
-               <div class="card-body">
-                 <h5 class="card-title">Tus Promos</h5>
-                 <p class="card-text">Productos frescos y de primera Calidad.</p>
-                 <a href="#" class="btn btn-primary">COMPRAR</a>
-               </div>
-           </div>
-         </article>
-         <article id="cartas" class="row">
-           <div class="card" style="width: 18rem;">
-               <img src="./imagenes/promo3.png" class="card-img-top" alt="...">
-               <div class="card-body">
-                 <h5 class="card-title">Tus Promos</h5>
-                 <p class="card-text">Productos frescos y de primera Calidad.</p>
-                 <a href="#" class="btn btn-primary">COMPRAR</a>
-               </div>
-           </div>
-        </article>
-        <article id="cartas" class="row">
-           <div class="card" style="width: 18rem;">
-               <img src="./imagenes/promos.png" class="card-img-top" alt="...">
-               <div class="card-body">
-                 <h5 class="card-title">Tus Promos</h5>
-                 <p class="card-text">Productos frescos y de primera Calidad.</p>
-                 <a href="#" class="btn btn-primary">COMPRAR</a>
-               </div>
-           </div>
-       </article>
-       <article id="cartas" class="row">
-           <div class="card" style="width: 18rem;">
-               <img src="./imagenes/promo6.png" class="card-img-top" alt="...">
-               <div class="card-body">
-                 <h5 class="card-title">Tus Promos</h5>
-                 <p class="card-text">Productos frescos y de primera Calidad.</p>
-                 <a href="#" class="btn btn-primary">COMPRAR</a>
-               </div>
-           </div>
-       </article>
-       </section>   
+            <div id="fila_prueba" class="row" style="background-color:#aaa">
+                <div class="col">
+                    <h1 class="text-center">TU TIENDA SALUDABLE</h1>
+                </div>
+            </div>
+              <div>
+                  <img src="./imagenes/fraselocal.png" alt="">
+              </div>
+              <div>
+                <ul id="Productos" class="row list-group list-group-horizontal">
+                </ul>
+                <p></p>
+            </div>
+            <div>
+              <h4>Nuestras Promos</h4>
+              <table class="table table-striped">
+                  <thead>
+                      <tr>
+                          <th scope="col">producto</th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Precio</th>
+                      </tr>
+                  </thead>
+                  <tbody id="tablabody">
+                  </tbody>
+              </table>
+          </div>
+      </div>
     </main>
     <footer>
         Copyright 2022. Hecho por Vanesa Talavera.
     </footer>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="./productos.js"></script>
     <script src="./proyectotalavera.js"></script>
 </body>
 </html>
