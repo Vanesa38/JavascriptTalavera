@@ -18,7 +18,7 @@ cards.append(card);
 }
 //Agregar productos al carrito//
 let miboton = document.getElementById(`btn${imagen.nombre}`);
-miBoton.addEventListener("click", (e) => {
+miboton.addEventListener("click", (e) => {
     e.preventDefault();
     console.log("Agregaste" + " " + producto.nombre + " " +"al carrito");
     productos.push(producto);

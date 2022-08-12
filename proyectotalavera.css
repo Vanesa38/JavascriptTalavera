@@ -25,14 +25,14 @@ header{
     width: 120px;
     position: fixed;
     top: 10px;
-    left: 30px;
+    left: 35px;
 }
 
 .contenedor{
     display: grid;
     grid-template-areas: "cards title" "cards title" "cards title" "cards title" "cards title";
     grid-template-columns: repeat(3, 2fr);
-    padding: 0px 25px;
+    padding: 0px 30px;
     column-gap: 2rem;
 }
 
