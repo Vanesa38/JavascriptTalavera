@@ -4,12 +4,13 @@ let cards=document.getElementById("productos");
     for (const imagen of listaproductos) {
         let card=document.createElement("div");
         card.className="card col-3 text-align-center";
-        card.innerHTML=`
+        card.innerHTML+=`
         <div class="card" style="width: 18rem;">
         <img src= ${imagen.foto} class="card-img-top" alt="...">
+        <div class="card-body">
         <h5 class="card-title">${imagen.nombre}</h5>
         <p class="card-text">${imagen.precio}</p>
-        <button id="miBoton--${imagen.nombre}" class="btn btn-primary">COMPRAR</button>
+        <button id="btn${imagen.nombre}" class="btn btn-primary">COMPRAR</button>
     </div>
 `;
  cards.append(card);
