@@ -4,6 +4,7 @@ let cards=document.getElementById("productos");
     for (const imagen of listaproductos) {
         let card=document.createElement("div");
         card.className="card col-3 text-align-center";
+        card.style= "width: 18rem;";
         card.innerHTML+=`
         <div class="card" style="width: 18rem;">
         <img src= ${imagen.foto} class="card-img-top" alt="...">
@@ -20,7 +21,7 @@ cards.append(card);
 let miboton = document.getElementById(`btn${imagen.nombre}`);
 miboton.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log("Agregaste" + " " + producto.nombre + " " +"al carrito");
+    console.log("Agregaste" + " " + productos.nombre + " " +"al carrito");
     productos.push(producto);
 })
 //fin de compra//
