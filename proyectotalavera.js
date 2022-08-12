@@ -11,9 +11,11 @@ let cards=document.getElementById("productos");
         <h5 class="card-title">${imagen.nombre}</h5>
         <p class="card-text">${imagen.precio}</p>
         <button id="btn${imagen.nombre}" class="btn btn-primary">COMPRAR</button>
-    </div>
+</div>
 `;
- cards.append(card);
+cards.append(card);
+
+}
 //Agregar productos al carrito//
 let miboton = document.getElementById(`btn${imagen.nombre}`);
 miBoton.addEventListener("click", (e) => {
@@ -21,9 +23,6 @@ miBoton.addEventListener("click", (e) => {
     console.log("Agregaste" + " " + producto.nombre + " " +"al carrito");
     productos.push(producto);
 })
-
-
-}
 //fin de compra//
 let botonFinalizarCompra = document.getElementById("fin")
 let precioFinal = 0
