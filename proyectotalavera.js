@@ -11,24 +11,32 @@ let cards=document.getElementById("productos");
         <div class="card-body">
         <h5 class="card-title">${imagen.nombre}</h5>
         <p class="card-text">${imagen.precio}</p>
-        <button id="btn${imagen.nombre}" class="btn btn-primary">COMPRAR</button>
+        <button id="btn" class="btn btn-primary" onclick="AddToCart(${imagen.id})">COMPRAR</button>
 </div>
-`;
+`;                                              //Linea 14. Llamo a la funcion y le envio el id del producto por parametro
 cards.append(card);
 
 }
+
 //Agregar productos al carrito//
-let miboton = document.getElementById(`btn${imagen.nombre}`);
-miboton.addEventListener("click", (e) => {
-    e.preventDefault();
-    console.log("Agregaste" + " " + productos.nombre + " " +"al carrito");
-    productos.push(producto);
-})
-//fin de compra//
+function AddToCart(selectedId) //recibo el id
+{
+    //metodo find me retorna un objeto que coincida con la condicion
+    let selectedProduct = listaproductos.find(element => element.id == selectedId)
+    if(selectedProduct != null) //valido que no sea null, osea, que encontro algo
+    {
+        carrito.push(selectedProduct) //lo agrgeo
+    }
+    console.log(selectedProduct); //lo muestro por consola para corroborar
+}
+
+
+
+
 let botonFinalizarCompra = document.getElementById("fin")
 let precioFinal = 0
 let checkOut = 0
-botonFinDeCompra.addEventListener ("click", (e) => {
+botonFinalizarCompra.addEventListener ("click", (e) => {
     e.preventDefault ();
     precioFinal = productos.map (productos => productos.precio)
     checkOut = precioFinal.reduce ((ac,el) => ac + el,0)
