@@ -4,11 +4,15 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body{
     display: grid;
     grid-template-rows: auto 1fr auto;
-    background-color:  whitesmoke;
+    background-color: rgb(142,242,50);
+    background: -moz-linear-gradient(192deg, rgba(142,242,50,0.9682247899159664) 0%, rgba(242,241,172,1) 35%);
+    background: -webkit-linear-gradient(192deg, rgba(142,242,50,0.9682247899159664) 0%, rgba(242,241,172,1) 35%);
+    background: linear-gradient(192deg, rgba(142,242,50,0.9682247899159664) 0%, rgba(242,241,172,1) 35%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#8ef232",endColorstr="#f2f1ac",GradientType=1);
+ 
 }
 
 header{
@@ -32,7 +36,6 @@ header{
     grid-template-areas: "cards title" "cards title" "cards title" "cards title" "cards title";
     grid-template-columns: repeat(3, 2fr);
     background-color: #128c7e;
-    background-image: url("flowers-4931217.png");
     padding: 0px 30px;
     column-gap: 2rem;
 }
@@ -54,3 +57,5 @@ footer{
     padding: 10px 10px;
     margin-top: 30px;
 }
+
+
