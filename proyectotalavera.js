@@ -32,7 +32,7 @@ function AddToCart(selectedId) //recibo el id
 
 
 
-
+//finalizar compra
 let botonFinalizarCompra = document.getElementById("fin")
 let precioFinal = 0
 let checkOut = 0

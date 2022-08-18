@@ -32,6 +32,7 @@ header{
     display: grid;
     grid-template-areas: "cards title" "cards title" "cards title" "cards title" "cards title";
     grid-template-columns: repeat(3, 2fr);
+    background-color: #128c7e;
     padding: 0px 30px;
     column-gap: 2rem;
 }
