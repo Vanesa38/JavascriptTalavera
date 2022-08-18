@@ -27,16 +27,15 @@ header{
     top: 10px;
     left: 35px;
 }
-
 .contenedor{
     display: grid;
     grid-template-areas: "cards title" "cards title" "cards title" "cards title" "cards title";
     grid-template-columns: repeat(3, 2fr);
     background-color: #128c7e;
+    background-image: url("flowers-4931217.png");
     padding: 0px 30px;
     column-gap: 2rem;
 }
-
 .contenedor-cards{
     grid-area: auto;
 }
