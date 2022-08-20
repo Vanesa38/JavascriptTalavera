@@ -21,30 +21,6 @@ cards.append(card);
 
 }
 
-
-
-//Agregar productos al carrito//
-function AddToCart(selectedId) //recibo el id
-{
-    //metodo find me retorna un objeto que coincida con la condicion
-    let selectedProduct = listaproductos.find(element => element.id == selectedId)
-    if(selectedProduct != null) //valido que no sea null, osea, que encontro algo
-    {
-        carrito.push(selectedProducts) //lo agrgeo
-    }
-    console.log(selectedProducts); //lo muestro por consola para corroborar
-}
-
-
-/*
-//finalizar compra
-let productos = 0
-let botonfinalizarcompra = document.getElementById("productos")
-let precioFinal = 0
-let checkOut = 0
-*/
-
-
 //Agregar productos al carrito//
 function AddToCart(selectedId) //recibo el id
 {
@@ -55,6 +31,7 @@ function AddToCart(selectedId) //recibo el id
         carrito.push(selectedProduct) //lo agrgeo
     }
     console.log(selectedProduct); //lo muestro por consola para corroborar
+    localStorage.setItem("carrito",JSON.stringify(carrito));
 }
 //finalizar compra
 
@@ -71,5 +48,12 @@ productos.addEventListener ("clickcompra", (e) => {
 
 
 })
+
+function vaciarcarrito(){
+    document.getElementById("cleanCard").addEventListener("click", function(){
+        carrito.length = 0;
+        localStorage.setItem("carrito",JSON.stringify(carrito));
+    });
+}
 
 

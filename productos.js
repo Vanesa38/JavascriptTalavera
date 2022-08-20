@@ -30,5 +30,4 @@ const listaproductos = [{
     nombre: "Promo Gourmet",
     precio:  1740
 }
-
 ];
