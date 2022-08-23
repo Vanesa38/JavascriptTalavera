@@ -6,6 +6,17 @@ class listado {
     this.foto= foto;
 }
 }
+
+class ProdDelCarrito {
+    constructor(producto, cantidad) {
+        this.producto = producto;
+        this.cantidad = cantidad;
+    }
+}
+
+const producto = []
+
+
 const listaproductos = [{
     id: 1,
     foto: src="./imagenes/promo2.png",

@@ -1,5 +1,8 @@
 let carrito=[];
 
+//operador logico or//
+carrito = JSON.parse(localStorage.getItem("carrito")) || []
+
 let compra=document.getElementsByClassName("productos");
 console.log(compra.innerHTML);
 
@@ -21,6 +24,36 @@ cards.append(card);
 
 }
 
+function crearCarrito() {
+    let precioFinal = 0;
+    contenedorcarritocompra.innerHTML = "";
+
+    micarrito.forEach(
+        (compra) => {
+            let renglonescarrito= document.createElement("tr");
+            
+            renglonescarrito.innerHTML = `
+                <td>${compra.producto.nombre}</td>
+                <td><input id="cantidad-producto-${compra.producto.nombre}" type="number" value="${compra.cantidad}" min="1" max="50" step="1" style="width: 50px;"/></td>
+                <td>$ ${compra.producto.precio}</td>
+                <td>$ ${compra.producto.precio*compra.cantidad}</td>
+            `;
+
+        contenedorcarritocompra.append("renglonescarrito");
+        let Productos = document.getElementById(`cantidad-producto-${compra.producto.nombre}`);
+    //operador//
+    precioFinal+=compra.cantidad*compra.producto.precio;
+                
+        cantidadProductos.addEventListener("change", (e) => {
+            let nuevaCantidad = e.target.value;
+            elemento.cantidad = nuevaCantidad;
+            crearCarrito ();
+        });
+
+    }
+);
+}
+
 //Agregar productos al carrito//
 function AddToCart(selectedId) //recibo el id
 {
@@ -40,7 +73,7 @@ productos.addEventListener ("clickcompra", (e) => {
     precioFinal = productos.map (selectedproduct => productos.precio)
     checkOut = precioFinal.reduce ((ac,el) => ac + el,0)
     console.table(productos);
-    const oferta = productos.filter (selectedproduct => producto.precio < 1000)
+    const oferta = productos.filter (selectedproduct => productos.precio < 1000)
     console.log ("Los siguientes productos estan en oferta")
     console.log (oferta)
 
