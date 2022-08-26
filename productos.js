@@ -17,7 +17,8 @@ class ProdDelCarrito {
 const producto = []
 
 
-const listaproductos = [{
+const listaproductos = [
+{
     id: 1,
     foto: src="./imagenes/promo2.png",
     nombre: "Promo Natural",
