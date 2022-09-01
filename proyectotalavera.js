@@ -1,12 +1,13 @@
-let carrito=[];
-
-//operador logico or//
-carrito = JSON.parse(localStorage.getItem("carrito")) || []
+let carrito=JSON.parse(localStorage.getItem("carrito")) || [];
+let productosJSON = [];
+let card 
 
 let compra=document.getElementsByClassName("productos");
 console.log(compra.innerHTML);
 
 let cards=document.getElementById("productos"); 
+
+function renderizarProductos() {
     for (const compra of listaproductos) {
         let card=document.createElement("div");
         card.className="card col-3 text-align-center";
@@ -18,11 +19,16 @@ let cards=document.getElementById("productos");
         <h5 class="card-title">${compra.nombre}</h5>
         <p class="card-text">${compra.precio}</p>
         <button id="btn" class="btn btn-primary" onclick="newAddToCart(${compra.id})">COMPRAR</button>
-</div>
-`;                                              //Linea 14. Llamo a la funcion y le envio el id del producto por parametro
+    </div>
+
+        `;                                              // Llamo a la funcion y le envio el id del producto por parametro
 cards.append(card);
 
 }
+}
+
+renderizarProductos();
+
 function crearCarrito() {
     let precioFinal = 0;
     contenedorcarritocompra.innerHTML = "";
@@ -42,10 +48,13 @@ function crearCarrito() {
     
     //operador++//
     precioFinal+=compra.cantidad*compra.producto.precio;
+
+    //agregamos evento a carrito
+    let cantidadProductos = document.getElementById(`cantidad-producto-${compra.producto.nombre}`);
                 
     cantidadProductos.addEventListener("change", (e) => {
             let selectedProduct = e.target.value;
-            elemento.cantidad = selectedProduct;
+            compra.cantidad = selectedProduct;
             crearCarrito ();
         });
 
@@ -56,18 +65,18 @@ function crearCarrito() {
 //Agregar productos al carrito//
 newAddToCart();
 function newAddToCart(selectedId){ //recibo el id
-
 //metodo find me retorna un objeto que coincida con la condicion
-let selectedProduct = listaproductos.find(element => element.id == selectedId)
+let selectedProduct = listaproductos.find(element => element.id == selectedId.id);
 if(selectedProduct != null) //valido que no sea null, osea, que encontro algo
 {
-    carrito.push(selectedProduct) //lo agrgeo
-    }
-    console.log(selectedProduct); //lo muestro por consola para corroborar
+    carrito.push(selectedProduct) //lo agrego    
+
+    console.log(selectedProduct); //lo muestro por consola
+
     localStorage.setItem("carrito",JSON.stringify(carrito));
 
     Swal.fire({
-        title: "¡Producto agregado!",
+        title: "¡Producto agregado al carro!",
         text: `agregado al carrito de compra.`,
         icon: "success",
         buttons: {
@@ -81,9 +90,11 @@ if(selectedProduct != null) //valido que no sea null, osea, que encontro algo
             }
         }
     
+    
     }).then((iracarrito) => {
  
         if(iracarrito) {
+        
             //swal("al carrito!");
            
         const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {keyboard: true});
@@ -94,29 +105,84 @@ if(selectedProduct != null) //valido que no sea null, osea, que encontro algo
     });
      
     return cards; 
+
+    
+    } else {
+        
+        //el producto existe en el carro y la posicion
+
+        let posicion = carrito.findIndex(element => element.id == selectedId);
+        console.log(posicion);
+        carrito[posicion].cantidad += 1;
+         //con querySelector falla
+         document.getElementById(selectedId).innerHTML=carrito[posicion].cantidad;
+    }
+    
+    //recalcular total
+    document.getElementById("gastoTotal").innerText=(`Total: $ ${calcularTotal()}`);
+    localStorage.setItem("carrito",JSON.stringify(carrito));
+
     }
 
-//finalizar compra
+    //calcular total
 
-    productos.addEventListener ("clickcompra", (e) => {
-    e.preventDefault ();
-    precioFinal = productos.map (selectedproduct => productos.precio)
-    checkOut = precioFinal.reduce ((ac,el) => ac + el,0)
-    console.table(productos);
-    const oferta = productos.filter (selectedproduct => productos.precio < 1000)
-    console.log ("Los siguientes productos estan en oferta")
-    console.log (oferta)
+    function calcularTotal() {
+        let suma = 0;
+        for (const elemento of carrito) {
+            suma = suma + (elemento.precio * elemento.cantidad);
+        }
+        return suma;
+    }
 
-    console.log ("El total a pagar es $" + checkOut)
+    function eliminar(id){
+        let indice=carrito.findIndex(prod => prod.id==id);
+        carrito.splice(indice,1);//eliminado del carro
+        let fila=document.getElementById(`fila${id}`);
+        document.getElementById("tablabody").removeChild(fila);//eliminado de la tabla
+        document.getElementById("gastoTotal").innerText=(`Total: $ ${calcularTotal()}`);
+        localStorage.setItem("carrito",JSON.stringify(carrito));
+        Swal.fire("Producto eliminado del carro!")
+    }
 
+    //ordenar
 
-})
+    function ordenar() {
+        let seleccion = document.getElementById("mySelection").value;
+        console.log(seleccion)
+        if (seleccion == "menor") {
+            productosJSON.sort(function(a, b) {
+                return a.precio - b.precio
+            });
+        } else if (seleccion == "mayor") {
+            productosJSON.sort(function(a, b) {
+                return b.precio - a.precio
+            });
+        } else if (seleccion == "alfabetico") {
+            productosJSON.sort(function(a, b) {
+                return a.nombre.localeCompare(b.nombre);
+            });
+        }
+        card.innerHTML="";
+        renderizarProductos();
+    }
+
+//vaciar carro
 
 function vaciarcarrito(){
     document.getElementById("cleanCard").addEventListener("click", function(){
         carrito.length = 0;
-        localStorage.setItem("carrito",JSON.stringify(carrito));
+        localStorage.removeItem("carrito",JSON.stringify(carrito));
     });
 }
 
+//Fetch para solicitar productos.json
 
+async function obtenerproductosJSON() {
+    const URLJSON="productos.json";
+    const resp=await fetch(URLJSON)
+    const data= await resp.json()
+    productosJSON = data;
+    renderizarProductos();
+}
+
+obtenerproductosJSON();

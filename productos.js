@@ -7,18 +7,9 @@ class listado {
 }
 }
 
-class ProdDelCarrito {
-    constructor(producto, cantidad) {
-        this.producto = producto;
-        this.cantidad = cantidad;
-    }
-}
+const listaproductos = 
 
-const producto = []
-
-
-const listaproductos = [
-{
+[{
     id: 1,
     foto: src="./imagenes/promo2.png",
     nombre: "Promo Natural",
@@ -41,5 +32,11 @@ const listaproductos = [
     foto: src="./imagenes/promo5.png",
     nombre: "Promo Gourmet",
     precio:  1740
-}
-];
+},
+{
+    id: 5,
+    foto: src="./imagenes/promorefri.PNG",
+    nombre: "Promo Delice",
+    precio: 1550
+},
+]

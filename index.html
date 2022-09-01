@@ -20,20 +20,61 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav align-items-center">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./index.html"><strong><b>HOME</b></strong></a>
+                    <a class="nav-link active boton" aria-current="page" href="./index.html"><strong><b>HOME</b></strong></a>
                   </li>
-                </ul>
+                  <button id="1234" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
              </div>
-            </div>
+
+          </div>
+
         </nav>
+
     </header>
+
+    <!--Modal-->
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Carrito de Compras</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody id="items"></tbody>
+          <tfoot>
+            <tr id="footer">
+              <th scope="row" colspan="5">Carrito vacio - comience a comprar</th>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="row" id="cards"></div>
+       </div>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cerrar</button>
+        <a href="./index.html" id = "Finish" class="btn btn-secondary"> Terminar compra </a>
+      </div>
+    </div>
+  </div>
+</div>
     <main>
         <div class="container">
             <div id="fila_prueba" class="row" style="background-color:rgba(186, 240, 86, 0.671)">
                 <div class="col">
-                  <div data-aos="zoom-in">
                     <h1 class="text-center">TU TIENDA SALUDABLE</h1> 
-                  </div>
+                    <div data-aos="zoom-in"></div>
                 </div>
             </div>
               <div>
