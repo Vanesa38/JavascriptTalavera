@@ -1,4 +1,4 @@
-class listado {
+    class listado {
     constructor (id, nombre,precio,foto){
     this.id = id;
     this.nombre = nombre;
@@ -7,9 +7,18 @@ class listado {
 }
 }
 
-const listaproductos = 
+class ProdDelCarrito {
+    constructor(producto, cantidad) {
+        this.producto = producto;
+        this.cantidad = cantidad;
+    }
+}
 
-[{
+const producto = []
+
+
+const listaproductos = [
+{
     id: 1,
     foto: src="./imagenes/promo2.png",
     nombre: "Promo Natural",

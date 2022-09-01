@@ -7,17 +7,19 @@ console.log(compra.innerHTML);
 
 let cards=document.getElementById("productos"); 
 
+renderizarProductos()
 function renderizarProductos() {
+    console.log(listaproductos)
     for (const compra of listaproductos) {
         let card=document.createElement("div");
         card.className="card col-3 text-align-center";
         card.style= "width: 18rem;";
         card.innerHTML+=`
         <div class="card" style="width: 18rem;">
-        <img src= ${compra.foto} class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">${compra.nombre}</h5>
-        <p class="card-text">${compra.precio}</p>
+        <h3>ID: ${compra.id}</h3>
+        <img src= ${compra.foto} "width="250px" height="250px"">
+        <p>nombre${compra.nombre}</p>
+        <p>precio${compra.precio}</p>
         <button id="btn" class="btn btn-primary" onclick="newAddToCart(${compra.id})">COMPRAR</button>
     </div>
 
@@ -27,7 +29,6 @@ cards.append(card);
 }
 }
 
-renderizarProductos();
 
 function crearCarrito() {
     let precioFinal = 0;
@@ -63,12 +64,15 @@ function crearCarrito() {
 }
 
 //Agregar productos al carrito//
-newAddToCart();
 function newAddToCart(selectedId){ //recibo el id
 //metodo find me retorna un objeto que coincida con la condicion
 let selectedProduct = listaproductos.find(element => element.id == selectedId.id);
-if(selectedProduct != null) //valido que no sea null, osea, que encontro algo
-{
+console.log(selectedProduct); //lo muestro por consola para corroborar
+if(selectedProduct == undefined){
+    let selectedProduct = {
+       
+        cantidad:1
+    };
     carrito.push(selectedProduct) //lo agrego    
 
     console.log(selectedProduct); //lo muestro por consola
@@ -105,6 +109,16 @@ if(selectedProduct != null) //valido que no sea null, osea, que encontro algo
     });
      
     return cards; 
+
+     //agregamos una fila a la tabla del carro
+
+     document.getElementById("tablabody").innerHTML+=(`
+     <tr id='fila${selectedProduct.id}'>
+     <td> ${selectedProduct.id} </td>
+     <td> ${selectedProduct.nombre}</td>
+     <td id='${selectedProduct.id}'> ${selectedProduct.cantidad}</td>
+     <td> ${selectedProduct.precio}</td>
+     <td> <button class='btn btn-light' onclick='eliminar(${selectedProduct.id})'>🗑️</button>`);
 
     
     } else {
@@ -183,6 +197,7 @@ async function obtenerproductosJSON() {
     const data= await resp.json()
     productosJSON = data;
     renderizarProductos();
+    obtenerproductosJSON();
 }
 
-obtenerproductosJSON();
+
