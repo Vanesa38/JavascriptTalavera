@@ -16,10 +16,10 @@ function renderizarProductos() {
         card.style= "width: 18rem;";
         card.innerHTML+=`
         <div class="card" style="width: 18rem;">
-        <h3>ID: ${compra.id}</h3>
         <img src= ${compra.foto} "width="250px" height="250px"">
-        <p>nombre${compra.nombre}</p>
-        <p>precio${compra.precio}</p>
+        <p>${compra.nombre}</p>
+        <p>${compra.precio}</p>
+        <h3>🛒${compra.id}</h3>
         <button id="btn" class="btn btn-primary" onclick="newAddToCart(${compra.id})">COMPRAR</button>
     </div>
 
@@ -112,7 +112,7 @@ if(selectedProduct == undefined){
 
      //agregamos una fila a la tabla del carro
 
-     document.getElementById("tablabody").innerHTML+=(`
+     document.getElementById("items").innerHTML+=(`
      <tr id='fila${selectedProduct.id}'>
      <td> ${selectedProduct.id} </td>
      <td> ${selectedProduct.nombre}</td>
