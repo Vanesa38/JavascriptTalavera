@@ -29,6 +29,7 @@ cards.append(card);
 }
 }
 
+//crear carro
 
 function crearCarrito() {
     let precioFinal = 0;
@@ -147,6 +148,8 @@ if(selectedProduct == undefined){
         }
         return suma;
     }
+
+    //Eliminar productos
 
     function eliminar(id){
         let indice=carrito.findIndex(prod => prod.id==id);

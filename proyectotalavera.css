@@ -7,11 +7,7 @@
 body{
     display: grid;
     grid-template-rows: auto 1fr auto;
-    background-color: rgb(142,242,50);
-    background: -moz-linear-gradient(192deg, rgba(142,242,50,0.9682247899159664) 0%, rgba(242,241,172,1) 35%);
-    background: -webkit-linear-gradient(192deg, rgba(142,242,50,0.9682247899159664) 0%, rgba(242,241,172,1) 35%);
-    background: linear-gradient(192deg, rgba(142,242,50,0.9682247899159664) 0%, rgba(242,241,172,1) 35%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#8ef232",endColorstr="#f2f1ac",GradientType=1);
+    background-color: rgb(248, 240, 197);
  
 }
 
