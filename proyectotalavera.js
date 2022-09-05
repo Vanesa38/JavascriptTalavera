@@ -7,8 +7,12 @@ console.log(compra.innerHTML);
 
 let cards=document.getElementById("productos"); 
 
+//FETCH- se obtienen los datos del archivo (stock.json) y se insertan en las cartas
 renderizarProductos()
 function renderizarProductos() {
+    fetch('/productos.json')
+    .then((res) => res.json())
+    .then((listaproductos) => {
     console.log(listaproductos)
     for (const compra of listaproductos) {
         let card=document.createElement("div");
@@ -16,10 +20,10 @@ function renderizarProductos() {
         card.style= "width: 18rem;";
         card.innerHTML+=`
         <div class="card" style="width: 18rem;">
-        <img src= ${compra.foto} "width="250px" height="250px"">
+        <img src="${compra.foto}" "width="250px" height="250px"">
         <p>${compra.nombre}</p>
-        <p>${compra.precio}</p>
-        <h3>🛒${compra.id}</h3>
+        <p>$${compra.precio}</p>
+        <h3>🛒</h3>
         <button id="btn" class="btn btn-primary" onclick="newAddToCart(${compra.id})">COMPRAR</button>
     </div>
 
@@ -27,7 +31,9 @@ function renderizarProductos() {
 cards.append(card);
 
 }
+})
 }
+
 
 //crear carro
 
@@ -64,6 +70,7 @@ function crearCarrito() {
 );
 }
 
+
 //Agregar productos al carrito//
 function newAddToCart(selectedId){ //recibo el id
 //metodo find me retorna un objeto que coincida con la condicion
@@ -74,11 +81,12 @@ if(selectedProduct == undefined){
        
         cantidad:1
     };
+
     carrito.push(selectedProduct) //lo agrego    
 
     console.log(selectedProduct); //lo muestro por consola
 
-    localStorage.setItem("carrito",JSON.stringify(carrito));
+localStorage.setItem("carrito",JSON.stringify(carrito));
 
     Swal.fire({
         title: "¡Producto agregado al carro!",
@@ -194,13 +202,13 @@ function vaciarcarrito(){
 
 //Fetch para solicitar productos.json
 
-async function obtenerproductosJSON() {
-    const URLJSON="productos.json";
-    const resp=await fetch(URLJSON)
-    const data= await resp.json()
-    productosJSON = data;
-    renderizarProductos();
-    obtenerproductosJSON();
-}
+//async function obtenerproductosJSON() {
+//    const URLJSON="productos.json";
+//    const resp=await fetch(URLJSON)
+//    const data= await resp.json()
+//productosJSON = data;
+//renderizarProductos();
+//    obtenerproductosJSON();
+//}
 
 
