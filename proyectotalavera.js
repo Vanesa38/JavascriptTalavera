@@ -2,6 +2,7 @@ let carrito=JSON.parse(localStorage.getItem("carrito")) || [];
 let productosJSON = [];
 let card 
 
+
 let compra=document.getElementsByClassName("productos");
 console.log(compra.innerHTML);
 
@@ -32,7 +33,9 @@ cards.append(card);
 
 }
 })
+
 }
+
 
 
 //crear carro
@@ -74,19 +77,19 @@ function crearCarrito() {
 //Agregar productos al carrito//
 function newAddToCart(selectedId){ //recibo el id
 //metodo find me retorna un objeto que coincida con la condicion
-let selectedProduct = listaproductos.find(element => element.id == selectedId.id);
+let selectedProduct = listaproductos.find(element => element.id = selectedId);
 console.log(selectedProduct); //lo muestro por consola para corroborar
 if(selectedProduct == undefined){
     let selectedProduct = {
        
         cantidad:1
-    };
+    }; 
 
     carrito.push(selectedProduct) //lo agrego    
 
     console.log(selectedProduct); //lo muestro por consola
 
-localStorage.setItem("carrito",JSON.stringify(carrito));
+ localStorage.setItem("carrito",JSON.stringify(carrito));
 
     Swal.fire({
         title: "¡Producto agregado al carro!",
@@ -142,6 +145,7 @@ localStorage.setItem("carrito",JSON.stringify(carrito));
     }
     
     //recalcular total
+    
     document.getElementById("gastoTotal").innerText=(`Total: $ ${calcularTotal()}`);
     localStorage.setItem("carrito",JSON.stringify(carrito));
 
@@ -200,15 +204,6 @@ function vaciarcarrito(){
     });
 }
 
-//Fetch para solicitar productos.json
 
-//async function obtenerproductosJSON() {
-//    const URLJSON="productos.json";
-//    const resp=await fetch(URLJSON)
-//    const data= await resp.json()
-//productosJSON = data;
-//renderizarProductos();
-//    obtenerproductosJSON();
-//}
 
 
