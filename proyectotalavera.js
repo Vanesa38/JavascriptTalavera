@@ -82,9 +82,9 @@ function newAddToCart(selectedId){ //recibo el id
 //metodo find me retorna un objeto que coincida con la condicion
 let selectedProduct = carrito.find(element => element.id = selectedId);
 console.log(selectedProduct); //lo muestro por consola para corroborar
-if(selectedProduct == undefined){
+if(selectedProduct !== undefined){
     let prodACarrito = {
-        ...productoNuevo,
+        
        
         cantidad:1
     }; 
