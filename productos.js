@@ -45,7 +45,7 @@ const listaproductos = [
 {
     id: 5,
     foto: src="./imagenes/tofuartesanal.PNG",
-    nombre: "TOFU ARTESANAL GREEN FOOD POR PIEZA",
+    nombre: "TOFU ARTESANAL GREEN FOOD VEGAN POR PIEZA",
     precio: 500
 },
 {

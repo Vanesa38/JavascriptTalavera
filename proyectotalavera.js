@@ -1,6 +1,7 @@
 let carrito=JSON.parse(localStorage.getItem("carrito")) || [];
 let productosJSON = [];
-let card 
+let card=[];
+
 
 
 let compra=document.getElementsByClassName("productos");
@@ -21,7 +22,7 @@ function renderizarProductos() {
         card.style= "width: 18rem;";
         card.innerHTML+=`
         <div class="card" style="width: 18rem;">
-        <img src="${compra.foto}" "width="250px" height="250px"">
+        <img src="${compra.foto}" alt="${compra.nombre}">
         <p>${compra.nombre}</p>
         <p>$${compra.precio}</p>
         <h3>🛒</h3>
@@ -56,6 +57,8 @@ function crearCarrito() {
             `;
 
         contenedorcarritocompra.append("renglonescarrito");
+
+   
     
     //operador++//
     precioFinal+=compra.cantidad*compra.producto.precio;
@@ -77,10 +80,11 @@ function crearCarrito() {
 //Agregar productos al carrito//
 function newAddToCart(selectedId){ //recibo el id
 //metodo find me retorna un objeto que coincida con la condicion
-let selectedProduct = listaproductos.find(element => element.id = selectedId);
+let selectedProduct = carrito.find(element => element.id = selectedId);
 console.log(selectedProduct); //lo muestro por consola para corroborar
 if(selectedProduct == undefined){
-    let selectedProduct = {
+    let prodACarrito = {
+        ...productoNuevo,
        
         cantidad:1
     }; 
@@ -88,6 +92,8 @@ if(selectedProduct == undefined){
     carrito.push(selectedProduct) //lo agrego    
 
     console.log(selectedProduct); //lo muestro por consola
+
+//guardar carrito en storage
 
  localStorage.setItem("carrito",JSON.stringify(carrito));
 
@@ -118,19 +124,19 @@ if(selectedProduct == undefined){
         myModal.show(modalToggle);
 
         }
-    });
+    }); 
      
     return cards; 
 
      //agregamos una fila a la tabla del carro
 
-     document.getElementById("items").innerHTML+=(`
+     Document.getElementById("items").innerHTML+=(`
      <tr id='fila${selectedProduct.id}'>
      <td> ${selectedProduct.id} </td>
      <td> ${selectedProduct.nombre}</td>
      <td id='${selectedProduct.id}'> ${selectedProduct.cantidad}</td>
      <td> ${selectedProduct.precio}</td>
-     <td> <button class='btn btn-light' onclick='eliminar(${selectedProduct.id})'>🗑️</button>`);
+     <td> <button class='btn" btn-light' onclick='eliminar(${selectedProduct.id})'>🗑️</button>`);
 
     
     } else {
@@ -170,7 +176,10 @@ if(selectedProduct == undefined){
         document.getElementById("tablabody").removeChild(fila);//eliminado de la tabla
         document.getElementById("gastoTotal").innerText=(`Total: $ ${calcularTotal()}`);
         localStorage.setItem("carrito",JSON.stringify(carrito));
-        Swal.fire("Producto eliminado del carro!")
+        Swal({
+        text:"Producto eliminado del carro!",
+        position: 'center',
+        icon: "success",})
     }
 
     //ordenar
@@ -204,6 +213,18 @@ function vaciarcarrito(){
     });
 }
 
+//formulario
 
+let formulario=document.getElementById("formulario");
+formulario.addEventListener("submit",validarformulario);
+
+function validarformulario(ev){
+    if((campoEmail.value=="")||(!isNaN(campoEmail.value))){
+        ev.preventDefault();
+    }
+    if((campoconsulta.value=="")||(!isNaN(campoconsulta.value))){
+        ev.preventDefault();
+    } 
+}
 
 
