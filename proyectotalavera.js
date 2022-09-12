@@ -1,3 +1,4 @@
+AOS.init();
 let listaproductos = []
 let carrito = []
 carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -154,7 +155,8 @@ const eliminarDelCarrito = (prodId) => {
 
 //FINALIZAR COMPRA Y VACIAR DE LOCAL STORAGE
 const finalizarCompra=document.getElementById("finish");
-finalizarCompra.addEventListener("click", () =>{
+finalizarCompra.addEventListener("click", (e) =>{
+    e.preventDefault( ) ;
     if(carrito.length === 0){
         swal('Elegí un producto!');
     }else{
@@ -163,8 +165,8 @@ finalizarCompra.addEventListener("click", () =>{
             icon: "success",
             text: 'Puedes retirar tu pedido luego de 5 dias hábiles',
             title: 'Gracias por tu compra',
-            button: false,
-            timer: 5000
+            button: true,
+            
        })
     
     carrito =[ ]
