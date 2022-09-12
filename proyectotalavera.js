@@ -141,16 +141,16 @@ const eliminarDelCarrito = (prodId) => {
 }
 
 //VACIAR CARRO-
-const vaciarTodo=document.getElementById("vaciar")
-vaciarTodo.addEventListener("click", () => {
-    if(carrito.length === 0){
-        swal('Elegí un producto!');
-    }else{
-        swal("Carrito Vacío!");
-    }
-    carrito.length = 0;
-    pintarCarrito();
-})
+//const vaciarTodo=document.getElementById("vaciar")
+//vaciarTodo.addEventListener("click", () => {
+    //if(carrito.length === 0){
+       // swal('Elegí un producto!');
+   // }else{
+        //swal("Carrito Vacío!");
+    //}
+    //carrito.length = 0;
+    //pintarCarrito();
+//})
 
 //FINALIZAR COMPRA Y VACIAR DE LOCAL STORAGE
 const finalizarCompra=document.getElementById("finish");
@@ -164,9 +164,12 @@ finalizarCompra.addEventListener("click", () =>{
             text: 'Puedes retirar tu pedido luego de 5 dias hábiles',
             title: 'Gracias por tu compra',
             button: false,
+            timer: 5000
        })
-    }
+    
     carrito =[ ]
+    items.innerHTML= "";
     localStorage.removeItem("carrito",JSON.stringify(carrito));
     pintarCarrito( );
+}
 })
