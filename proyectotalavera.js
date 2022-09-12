@@ -1,6 +1,7 @@
-AOS.init();
 let listaproductos = []
 let carrito = []
+
+//se cargan los productos que hayan quedado en el carrito
 carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 class listado {
@@ -41,12 +42,21 @@ function renderizarProductos() {
         <button id="btn${compra.id}" class="btn btn-primary">COMPRAR</button>
     </div>
 
-        `;                                              // Llamo a la funcion y le envio el id del producto por parametro
+        `;    
+        
+        //se inyectan las cards
 cards.append(card);
+
+// evento al botón comprar
+
 let botonComprar=document.getElementById(`btn${compra.id}`);
     botonComprar.onclick=()=>{
-        newAddToCart(compra)
-        pintarCarrito(compra)
+        
+        //se llama a la función agregar al carrito
+        newAddToCart(compra);
+        //se muestra el producto en el carrito
+        pintarCarrito(compra);
+        //se guarda en el local storage
         localStorage.setItem("carrito",JSON.stringify(carrito));
     }
  }
@@ -55,6 +65,7 @@ let botonComprar=document.getElementById(`btn${compra.id}`);
 
 
 //Agregar productos al carrito//
+
 function newAddToCart(selectedId){ //recibo el id
     //metodo find me retorna un objeto que coincida con la condicion
     let selectedProduct = listaproductos.find(compra => compra.id == selectedId);
@@ -102,7 +113,6 @@ function newAddToCart(selectedId){ //recibo el id
     
 }
 
-
 const filasCarrito=document.getElementById("items")
 function pintarCarrito(){
 
@@ -115,11 +125,15 @@ function pintarCarrito(){
          <td> ${compra.nombre}</td>
          <td> ${compra.cantidad}</td>
          <td> ${compra.precio}</td>
-         <td> ${compra.precio}</td>
+         <td>$${compra.precio*compra.cantidad}</td>
          <td> <button class="btn" id="eliminar${compra.id}">🗑️</button>`;
          filasCarrito.append(div);
+
+         //evento al boton eliminar
          const eliminarItem=document.getElementById(`eliminar${compra.id}`);
             eliminarItem.addEventListener("click", function(){
+
+                //funcion eliminar
                 eliminarDelCarrito(compra.id)
                 swal("Producto eliminado!");
             })
@@ -127,13 +141,13 @@ function pintarCarrito(){
      })
      const cantidadFooterCarrito=document.getElementById("footer");
      const totalFooterCarrito=document.getElementById("gastoTotal");
-     const totalSuma = carrito.reduce((acc,compra) => acc+compra.precio,0);
+     const totalSuma = carrito.reduce((acc,compra) => acc+(compra.precio*compra.cantidad),0);
      const cantSuma = carrito.reduce((acc,compra) => acc+compra.cantidad,0);
      carrito.length === 0 ? cantidadFooterCarrito.innerHTML = `<th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>`: totalFooterCarrito.innerHTML=`<h4>Total: $${totalSuma}</h4>`; cantidadFooterCarrito.innerHTML = `<th scope="row" colspan="5">Total de productos: ${cantSuma}</th>`;
      
 }
 
-//ELIMINAR PRODUCTOS-
+//ELIMINAR PRODUCTOS
 const eliminarDelCarrito = (prodId) => {
     const item = carrito.find((compra) => compra.id === prodId);
     const indice = carrito.indexOf(item);
@@ -141,17 +155,6 @@ const eliminarDelCarrito = (prodId) => {
     pintarCarrito();
 }
 
-//VACIAR CARRO-
-//const vaciarTodo=document.getElementById("vaciar")
-//vaciarTodo.addEventListener("click", () => {
-    //if(carrito.length === 0){
-       // swal('Elegí un producto!');
-   // }else{
-        //swal("Carrito Vacío!");
-    //}
-    //carrito.length = 0;
-    //pintarCarrito();
-//})
 
 //FINALIZAR COMPRA Y VACIAR DE LOCAL STORAGE
 const finalizarCompra=document.getElementById("finish");
@@ -164,11 +167,14 @@ finalizarCompra.addEventListener("click", (e) =>{
             position: 'center',
             icon: "success",
             text: 'Puedes retirar tu pedido luego de 5 dias hábiles',
-            title: 'Gracias por tu compra',
+            title: 'Gracias por tu compra!',
             button: true,
-            
        })
     
+    //al finalizar la compra se vacia el carrito
+
+    
+    //se borran productos de local storage y se actualiza
     carrito =[ ]
     items.innerHTML= "";
     localStorage.removeItem("carrito",JSON.stringify(carrito));
