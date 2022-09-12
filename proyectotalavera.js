@@ -158,9 +158,15 @@ finalizarCompra.addEventListener("click", () =>{
     if(carrito.length === 0){
         swal('Elegí un producto!');
     }else{
-        swal("Good job!", "You clicked the button!", "success");
+        swal({
+            position: 'center',
+            icon: "success",
+            text: 'Puedes retirar tu pedido luego de 5 dias hábiles',
+            title: 'Gracias por tu compra',
+            button: false,
+       })
     }
+    carrito =[ ]
     localStorage.removeItem("carrito",JSON.stringify(carrito));
-    carrito=[]
-    pintarCarrito()
+    pintarCarrito( );
 })
